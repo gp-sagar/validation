@@ -98,6 +98,9 @@ def welcome(request):
     return render(request, 'welcome.html')
 
 
-
+# Add Device
 def addDevice(request):
     return render(request, 'addDevice.html')
+
+def meterData(request):
+    return render(request, 'meterData.html')
