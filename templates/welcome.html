@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome : {{user.first_name}}</title>
+</head>
+<body>
+    <h1>Welcome : <em>{{user.first_name}}</em></h1>
+    {% for message in messages  %}
+        <p class="text-center text-danger" style="font-family: Poppins-Medium;">{{message}}</p>
+    {% endfor %}
+    <a href="/logout">Logout</a>
+
+</body>
+</html>
