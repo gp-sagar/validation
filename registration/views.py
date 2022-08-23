@@ -1,4 +1,3 @@
-import imp
 import pkgutil
 from unicodedata import name
 from django.shortcuts import render, redirect
@@ -97,3 +96,8 @@ def logout(request):
 @login_required(login_url='/login')
 def welcome(request):
     return render(request, 'welcome.html')
+
+
+
+def addDevice(request):
+    return render(request, 'addDevice.html')
