@@ -2,6 +2,8 @@ import pkgutil
 from unicodedata import name
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
+from registration.models import Device
+# from . from
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -95,12 +97,27 @@ def logout(request):
 # Welcome Page
 @login_required(login_url='/login')
 def welcome(request):
-    return render(request, 'welcome.html')
+    data = Device.objects.all()
+    # return render(request, 'index.html', {'data': data})
+    return render(request, 'welcome.html', {'data': data})
 
 
 # Add Device
+@login_required(login_url='/login')
 def addDevice(request):
-    return render(request, 'addDevice.html')
+    if request.method == 'POST':
+        device_name = request.POST['deviceName']
+        device_id = request.POST['deviceId']
+        device_status = request.POST['deviceStatus']
 
-def meterData(request):
-    return render(request, 'meterData.html')
+        addDevice = Device(device_name=device_name, device_id=device_id, device_status=device_status)
+        addDevice.save()
+        messages.success(request, 'Device Added') 
+        return redirect('/addDevice')
+    else:
+        return render(request, 'addDevice.html')
+
+# Device Data
+@login_required(login_url='/login')
+def deviceData(request):
+    return render(request, 'deviceData.html')

@@ -39,10 +39,16 @@
     </nav>
     <!-- Navbar End -->
 
+        <!-- Message aleart -->
+        {% for message in messages %}
+        <p class="text-center text-success mt-3" style="font-family: Poppins-Medium;">{{message}}</p>
+        {% endfor %}
+
     <!-- Add Device -->
     <div class="container px-4 p-5 d-flex m-auto justify-content-center mt-5">
         <div class="card border-success mb-3 p-1" style="max-width: 18rem;">
-            <form action="#">
+            <form action="#" method="POST">
+                {% csrf_token %}
                 <div class="card-header bg-transparent border-success">
                     Add Device
                 </div>

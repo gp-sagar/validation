@@ -4,3 +4,47 @@
     right: 0px;
     border-radius: 4px;
 }
+
+/* Device Data */
+table, th, td {
+    border:1px solid black;
+    padding: 5px 10px;
+}
+
+/* Live Icon */
+@keyframes blink {
+    0% {
+      transform: scale(1);
+      opacity: .25;
+    }
+    25%{
+      opacity: 1;
+    }
+    50% {
+      opacity: .25;
+    }
+    75%{
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: .25;
+    }
+}
+.blink {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  opacity: .25;
+  background-color: red;
+  -webkit-animation: blink 1s infinite;
+  -moz-animation: blink 1s infinite;
+  -o-animation: blink 1s infinite;
+  animation: blink 1s infinite;
+}
+#Live{
+  background-color: green;
+}
+#Down{
+  background-color: red;
+}

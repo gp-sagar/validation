@@ -1,0 +1,142 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome : {{user.first_name}}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Coustom Css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/coustom.css' %}">
+
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/welcome">GramPower</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/addDevice">Add Device</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Message aleart -->
+    {% for message in messages %}
+    <p class="text-center text-success" style="font-family: Poppins-Medium;">{{message}}</p>
+    {% endfor %}
+
+
+    <!-- Device Data -->
+    <div class="container px-4 pt-5 d-flex justify-content-center" id="featured-3">
+        <table class="m-5">
+            <tr>
+                <th class="border-primary">Device Id: </th>
+                <td class="border-primary px-5">GMP100001</td>
+            </tr>
+            <tr>
+                <th class="border-primary">Device Name: </th>
+                <td class="border-primary px-5">Device 1</td>
+            </tr>
+        </table>
+        <table class="m-5">
+            <tr>
+                <th class="border-primary">Device Status: </th>
+                <td class="border-primary px-5">Live</td>
+            </tr>
+            <tr>
+                <th class="border-primary">Last Data Point: </th>
+                <td class="border-primary px-5">2022-08-24 19:50:55</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Average Data Consumption -->
+    <div class="container px-4 py-2">
+        <div class="row g-4 py-5 row-cols-lg-4 justify-content-center">
+            <div class="feature col border px-2 pt-3 m-3 rounded-2">
+                <h6>Average Current</h6>
+                <p>12.3 Amp</p>
+            </div>
+            <div class="feature col border px-2 pt-3 m-3 rounded-2">
+                <h6>Average Voltage</h6>
+                <p>230.45 V</p>
+            </div>
+            <div class="feature col border px-2 pt-3 m-3 rounded-2">
+                <h6>Total Consumption</h6>
+                <p>2345 kWh</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Device Data End -->
+
+    <!-- Graph Section -->
+    <div class="container mb-5 graph-sec p-4" style="width: 40vw;">
+        <div class="live-chart d-flex bg-secondary px-2 py-1 align-items-center">
+            <div class="blink mx-3"></div>
+            <p class="moto m-0 text-light">Live Data</p>
+        </div>
+        <canvas id="myChart"></canvas>
+        <canvas id="mycharts"></canvas>
+    </div>
+    <!-- Graph Section End -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <!-- Live Chart -->
+    <script>
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0, 10, 20, 17, 30, 45, 45],
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+</body>
+
+</html>

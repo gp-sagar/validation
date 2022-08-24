@@ -48,27 +48,15 @@
     <!-- Device Data -->
     <div class="container px-4 py-5" id="featured-3">
         <div class="row g-4 py-5 row-cols-lg-4 justify-content-center">
+            {% for device in data %}
             <div class="feature col border p-3 m-3">
-                <a href="/meterData" class="icon-link align-items-center text-dark position-relative text-decoration-none">
-                    <h6>Device 1</h6>
-                    <p>GPM100001</p>
-                    <span class="bg-success px-3 py-1 text-light status">Live</span>
+                <a href="/deviceData" class="icon-link align-items-center text-dark position-relative text-decoration-none">
+                    <h6>{{device.device_name}}</h6>
+                    <p>{{device.device_id}}</p>
+                    <span class="px-3 py-1 text-light status" id={{device.device_status}}>{{device.device_status}}</span>
                 </a>
             </div>
-            <div class="feature col border p-3 m-3">
-                <a href="/meterData" class="icon-link align-items-center text-dark position-relative text-decoration-none">
-                    <h6>Device 2</h6>
-                    <p>GPM100002</p>
-                    <span class="bg-success px-3 py-1 text-light status">Down</span>
-                </a>
-            </div>
-            <div class="feature col border p-3 m-3">
-                <a href="/meterData" class="icon-link align-items-center text-dark position-relative text-decoration-none">
-                    <h6>Device 3</h6>
-                    <p>GPM100003</p>
-                    <span class="bg-success px-3 py-1 text-light status">Live</span>
-                </a>
-            </div>
+            {% endfor %}
         </div>
     </div>
     <!-- Device Data End -->

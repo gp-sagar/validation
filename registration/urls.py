@@ -8,5 +8,5 @@ urlpatterns = [
     path('welcome/', views.welcome, name='welcome'),
     path('logout/', views.logout, name='logout'),
     path('addDevice/', views.addDevice, name='addDevice'),
-    path('meterData/', views.meterData, name='meterData'),
+    path('deviceData/', views.deviceData, name='deviceData'),
 ]
