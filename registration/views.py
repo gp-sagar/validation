@@ -119,5 +119,4 @@ def addDevice(request):
 @login_required(login_url='/login')
 def deviceData(request, id):
     devicepost = Device.objects.filter(id = id)[0]
-    print(devicepost)
     return render(request, 'deviceData.html', {'devicepost':devicepost})

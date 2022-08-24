@@ -42,9 +42,11 @@ table, th, td {
   -o-animation: blink 1s infinite;
   animation: blink 1s infinite;
 }
+
 #Live{
   background-color: green;
 }
+
 #Down{
   background-color: red;
 }
