@@ -50,7 +50,7 @@
         <div class="row g-4 py-5 row-cols-lg-4 justify-content-center">
             {% for device in data %}
             <div class="feature col border p-3 m-3">
-                <a href="/deviceData" class="icon-link align-items-center text-dark position-relative text-decoration-none">
+                <a href=/deviceData/{{device.id}} class="icon-link align-items-center text-dark position-relative text-decoration-none">
                     <h6>{{device.device_name}}</h6>
                     <p>{{device.device_id}}</p>
                     <span class="px-3 py-1 text-light status" id={{device.device_status}}>{{device.device_status}}</span>

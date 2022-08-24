@@ -2,8 +2,7 @@ import pkgutil
 from unicodedata import name
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
-from registration.models import Device
-# from . from
+from .models import Device
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -98,7 +97,6 @@ def logout(request):
 @login_required(login_url='/login')
 def welcome(request):
     data = Device.objects.all()
-    # return render(request, 'index.html', {'data': data})
     return render(request, 'welcome.html', {'data': data})
 
 
@@ -119,5 +117,7 @@ def addDevice(request):
 
 # Device Data
 @login_required(login_url='/login')
-def deviceData(request):
-    return render(request, 'deviceData.html')
+def deviceData(request, id):
+    devicepost = Device.objects.filter(id = id)[0]
+    print(devicepost)
+    return render(request, 'deviceData.html', {'devicepost':devicepost})
