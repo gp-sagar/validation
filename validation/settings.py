@@ -77,10 +77,11 @@ WSGI_APPLICATION = 'validation.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'loginsystem',
-        'USER': 'postgres',
-        'PASSWORD': 'Sagarsi@786',
-        'HOST': 'localhost',
+        'NAME': 'dchink9q9uimt1',
+        'USER': 'jsaokpgxcowjdh',
+        'PORT': 5432
+        'PASSWORD': '480ffebcf7bccf585902ab585e5066f749fbbec75440a89cc583e650f36f220a',
+        'HOST': 'ec2-44-196-223-128.compute-1.amazonaws.com',
     }
 }
 
