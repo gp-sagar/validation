@@ -22,38 +22,14 @@ def signup(request):
             messages.info(request, 'Username is Already Taken') 
             return render(request, 'signup.html') 
         else:
-            if User.objects.filter(email=email).exists():
-                messages.info(request, 'Email Already in Use') 
-                return render(request, 'signup.html') 
+            if password == c_password:
+                addUser = User.objects.create_user(first_name=f_name, last_name=l_name, email=email, username=username, password=password)
+                addUser.save()
+                messages.success(request, 'Account created login now') 
+                return redirect('/login')
             else:
-                if len(f_name) > 2:
-                    if len(l_name) > 2:
-                        if len(email) > 11:
-                            if len(username) > 4:
-                                if len(password) > 4:
-                                    if password == c_password:
-                                        addUser = User.objects.create_user(first_name=f_name, last_name=l_name, email=email, username=username, password=password)
-                                        addUser.save()
-                                        messages.success(request, 'Account created login now') 
-                                        return redirect('/login')
-                                    else:
-                                        messages.info(request, 'Password not Matching')   
-                                        return render(request, 'signup.html')
-                                else:
-                                    messages.info(request, 'Password is too sort')   
-                                    return render(request, 'signup.html')
-                            else:
-                                messages.info(request, 'Username is minimum 5 Character')   
-                                return render(request, 'signup.html')
-                        else:
-                            messages.info(request, 'Email is not valid')   
-                            return render(request, 'signup.html')
-                    else:
-                        messages.info(request, 'Last name is too sort')   
-                        return render(request, 'signup.html')
-                else:
-                    messages.info(request, 'First name is too sort')   
-                    return render(request, 'signup.html')
+                messages.info(request, 'Password not Matching')   
+                return render(request, 'signup.html')
     else:
         return render(request, 'signup.html')
 
